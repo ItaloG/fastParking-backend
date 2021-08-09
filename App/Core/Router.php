@@ -26,10 +26,8 @@ class Router
         //recuperar a url que está sendo 
         $url = $this->parseURL();
 
-        if (isset($url[1]) && file_exists("../App/Controller/" . $url[1] . ".php")) {
+        if (isset($url[1]) && file_exists("../App/Controller/" . ucfirst($url[1]) . ".php")) {
             $this->controller = $url[1];
-            var_dump($url);
-            exit;
             unset($url[1]);
         } else {
             // print_r($url);
@@ -38,7 +36,7 @@ class Router
         }
 
         //importamos o controlelr
-        require_once "../App/Controller/" . $this->controller . ".php";
+        require_once "../App/Controller/" . ucfirst($this->controller) . ".php";
 
         //onstancia do controller
         $this->controller = new $this->controller;
