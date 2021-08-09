@@ -31,6 +31,8 @@ class Router
 
         if (isset($url[1]) && file_exists("../App/Controller/" . $url[1] . ".php")) {
             $this->controller = $url[1];
+            var_dump($url);
+            exit;
             unset($url[1]);
         } else {
             // print_r($url);
